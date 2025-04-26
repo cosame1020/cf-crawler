@@ -1,0 +1,14 @@
+name: Weekly Cloudflare Crawler
+
+on:
+  schedule:
+    - cron: '0 9 * * 5'  # 每週五 17:00 台灣時間（UTC+8 → UTC 9:00）
+  workflow_dispatch:     # 允許手動執行
+
+jobs:
+  trigger-worker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Worker
+        run: |
+          curl -s https://shy-haze-ac46.cosame1020.workers.dev/
